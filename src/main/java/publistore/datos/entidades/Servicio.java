@@ -18,8 +18,8 @@ public class Servicio {
     public Servicio() {
     }
 
-    public Servicio(int codProducto, String nombre, float precio, int cantidad) {
-        this.codServicio = codProducto;
+    public Servicio(int codServicio, String nombre, float precio, int cantidad) {
+        this.codServicio = codServicio;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;

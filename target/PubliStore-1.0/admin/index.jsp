@@ -31,11 +31,11 @@
             <header>
                 <section class="main row">
                     <section class="col-md-8">
-                        <h1>StoresWeb</h1>
+                        <h1>PubliStoresWeb</h1>
                         <h5>Sistema de gestión</h5>
                     </section>
                     <section class="col-md-4">
-                        <img src="img/Logo.png" alt="" width="55%" id="math" />
+                        <img src="../img/Logo.png" alt="" width="55%" id="math" />
                     </section>
                 </section>
             </header>
@@ -70,7 +70,7 @@
             <hr />
             <footer>
                 Desarrollado por: Oscar Bayona-1151906
-                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="img/sistemas.jpg" alt="Sistemas" /></a>
+                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="../img/sistemas.jpg" alt="Sistemas" /></a>
             </footer>
         </div>
     </body>

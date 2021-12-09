@@ -17,32 +17,15 @@ import publistore.datos.Conexion;
  * @author Oscar
  */
 public class ServicioDao {
-    private Connection conn;
-
-    public void setConnection(Connection conn) {
-        this.conn = conn;
-    }
-
-    public Connection getConnection() {
-        if (conn == null) {
-            conn = new Conexion().getConnection();
-        }
-        return conn;
-    }
-
-    public void closeConnection() {
-        try {
-            getConnection().close();
-            conn = null;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    
 
     public Servicio getServicio(int codServicio) {
+        Conexion conexion = new Conexion();
+        Connection con = null;
         Servicio s = null;
         try {
-            PreparedStatement stm = getConnection().prepareStatement(
+            con = conexion.conectar("ServicioDao.getServicio");
+            PreparedStatement stm = con.prepareStatement(
                     "SELECT * FROM servicio where codServicio = ?");
             stm.setInt(1, codServicio);
             ResultSet rs = stm.executeQuery();
@@ -61,11 +44,16 @@ public class ServicioDao {
         return s;
     }
 
-    public ArrayList<Servicio> getServicios() {
+    public ArrayList<Servicio> getServicios() throws SQLException {
         ArrayList<Servicio> lista = new ArrayList<Servicio>();
-        try {
-            Statement st = getConnection().createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM servicio");
+        Conexion conexion = new Conexion();
+        Connection con = conexion.conectar("ServicioDao.getServicios");
+        
+            
+            String sql = "SELECT * FROM servicio";
+            PreparedStatement ps = con.prepareStatement(sql);
+         
+         ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Servicio s = new Servicio();
                 s.setCodServicio(rs.getInt("codServicio"));
@@ -74,24 +62,33 @@ public class ServicioDao {
                 s.setPrecio(rs.getFloat("precio"));
                 lista.add(s);
             }
-            st.close();
+            
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
+        rs.close();
+        rs=null;
+        
+        ps.close();
+        ps=null;
+        
+        con.close();
+        con=null;
         return lista;
     }
 
-    public String addProducto(Servicio s, String msg) {
+    public String addServicio(Servicio s, String msg) {
+        Conexion conexion = new Conexion();
+        Connection con = null;
         PreparedStatement stm = null;
         try {
+            con = conexion.conectar("ServicioDao.addServicio");
             String sql;
             if (msg.equals("Modificar Servicio")) {
                 sql = "UPDATE SERVICIO set nombre=?,cantidad=?,precio=? WHERE codServicio=?";
-                stm = getConnection().prepareStatement(sql);
+                stm = con.prepareStatement(sql);
             } else {
                 sql = "INSERT INTO SERVICIO (nombre,cantidad,precio,codServicio) VALUES (?,?,?,?)";
-                stm = getConnection().prepareStatement(sql);
+                stm = con.prepareStatement(sql);
             }
             stm.setString(1, s.getNombre());
             stm.setInt(2, s.getCantidad());
@@ -107,8 +104,11 @@ public class ServicioDao {
     }
     
     public String eliminar(Servicio s) {
+        Conexion conexion = new Conexion();
+        Connection con = null;
         try {
-            PreparedStatement stm = getConnection().prepareStatement(
+            con = conexion.conectar("ServicioDao.eliminar");
+            PreparedStatement stm = con.prepareStatement(
                     "DELETE FROM PRODUCTO WHERE codproducto=?");
             stm.setInt(1, s.getCodServicio());
             stm.executeUpdate();

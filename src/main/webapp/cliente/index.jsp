@@ -31,11 +31,11 @@
             <header>
                 <section class="main row">
                     <section class="col-md-8">
-                        <h1>StoresWeb</h1>
+                        <h1>PubliStoresWeb</h1>
                         <h5>Sistema de gestión</h5>
                     </section>
                     <section class="col-md-4">
-                        <img src="img/Logo.png" alt="" width="55%" id="math" />
+                        <img src="../img/Logo.png" alt="" width="55%" id="math" />
                     </section>
                 </section>
             </header>
@@ -45,7 +45,7 @@
             <div class="container-md">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="index.jsp">Inicio</a>
+                        <a class="navbar-brand" href="<%=request.getContextPath() %>/cliente/index.jsp">Inicio</a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                                 aria-label="Toggle navigation">
@@ -54,7 +54,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Servicios</a>
+                                    <a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/cliente/consultar.jsp">Consultar Servicios</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Nosotros</a>
@@ -71,7 +71,7 @@
             <hr />
             <footer>
                 Desarrollado por: Oscar Bayona-1151906
-                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="img/sistemas.jpg" alt="Sistemas" /></a>
+                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="../img/sistemas.jpg" alt="Sistemas" /></a>
             </footer>
         </div>
     </body>

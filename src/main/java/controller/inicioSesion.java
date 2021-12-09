@@ -48,7 +48,7 @@ public class inicioSesion extends HttpServlet {
                 response.sendRedirect(url);
             } else {
                 sesion.setAttribute("cedula", u.getCedula());
-                request.getRequestDispatcher("cliente/index.jsp").forward(request, response);
+                request.getRequestDispatcher("/cliente/index.jsp").forward(request, response);
             }
         }
     }
