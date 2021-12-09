@@ -1,10 +1,8 @@
 controller\cerrarSesion.class
 co\edu\ufps\publistore\resources\JavaEE8Resource.class
 controller\inicioSesion.class
-publistore\negocio\UsuarioNegocio.class
 publistore\datos\entidades\Usuario.class
 co\edu\ufps\publistore\JAXRSConfiguration.class
 publistore\datos\Conexion.class
 publistore\datos\dao\UsuarioDao.class
-publistore\negocio\facade\UsuarioFacade.class
 controller\addUsuario.class
