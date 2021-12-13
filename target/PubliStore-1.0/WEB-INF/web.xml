@@ -20,6 +20,18 @@
         <servlet-name>comprar</servlet-name>
         <servlet-class>controller.comprar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>mostrarFactura</servlet-name>
+        <servlet-class>controller.mostrarFactura</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>form</servlet-name>
+        <servlet-class>controller.form</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>eliminar</servlet-name>
+        <servlet-class>controller.eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>inicioSesion</servlet-name>
         <url-pattern>/inicioSesion</url-pattern>
@@ -39,6 +51,18 @@
     <servlet-mapping>
         <servlet-name>comprar</servlet-name>
         <url-pattern>/cliente/comprar.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>mostrarFactura</servlet-name>
+        <url-pattern>/mostrarFactura</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>form</servlet-name>
+        <url-pattern>/admin/form.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>eliminar</servlet-name>
+        <url-pattern>/admin/eliminar.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

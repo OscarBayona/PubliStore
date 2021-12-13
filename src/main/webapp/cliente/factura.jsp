@@ -41,7 +41,7 @@
         <div class="container">
             <div class="card mt-3">
                 <div class="card-header">
-                    <h3>Compra de: <%=request.getAttribute("nombre") + " " + request.getAttribute("apellido")%>  </h3>
+                    <h3>Compra de: <%=request.getSession().getAttribute("nombre") + " " + request.getSession().getAttribute("apellido")%>  </h3>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -67,7 +67,7 @@
                                 <td><%=d.getTotal()%></td>
                                                 
                                 <td><%=d.getDescuento()%> </td>
-                                <td><%=d.getTotal() + d.getDescuento()%></td>
+                                <td><%=d.getTotal() - d.getDescuento()%></td>
                             </tr>
                         </tbody>
                     </table>
