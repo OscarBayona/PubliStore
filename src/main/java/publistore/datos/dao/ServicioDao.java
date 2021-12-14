@@ -109,7 +109,7 @@ public class ServicioDao {
         try {
             con = conexion.conectar("ServicioDao.eliminar");
             PreparedStatement stm = con.prepareStatement(
-                    "DELETE FROM PRODUCTO WHERE codproducto=?");
+                    "DELETE FROM SERVICIO WHERE codServicio=?");
             stm.setInt(1, s.getCodServicio());
             stm.executeUpdate();
             stm.close();

@@ -66,6 +66,12 @@
                         </div>
                     </div>
                 </nav>
+                <br>
+                <div class="container">
+                    <h1>Bienvenido <%=request.getSession().getAttribute("nombre") %></h1>
+                    <br>
+                    <br>
+                </div>
             </div>
             <hr />
             <footer>

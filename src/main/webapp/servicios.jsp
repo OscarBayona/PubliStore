@@ -1,6 +1,14 @@
+<%-- 
+    Document   : servicios
+    Created on : 13/12/2021, 06:48:53 PM
+    Author     : Oscar
+--%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.math.BigInteger"%>
+<%@page import="publistore.datos.entidades.Servicio"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +25,7 @@
                 integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
         crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        
+        <jsp:include page="/mostrarServ"></jsp:include>
         <title>StoresWeb</title>
     </head>
 
@@ -63,11 +71,28 @@
                     </div>
                 </nav>
                 <br>
+                <br>
                 <div class="container">
-                    <h1>Bienvenidos a nuestra nueva página web</h1>
-                    <br>
-                    <p>PubliStore les da la bienvenida a su nueva página web, en la que podrá conocer todos nuestros servicios y acceder a ellos de una forma fácil y rápida y con un solo clic.</p>
-                </div>
+            
+                        
+                        <%                    
+                            ArrayList<Servicio> lista = (ArrayList<Servicio>) request.getAttribute("lista");
+                            for (Servicio s : lista) {
+                        %>
+                        <div class="card border-warning mb-12" style="max-width: 50rem;">
+        <div class="card-header"><%=s.getCodServicio() %></div>
+            <div class="card-body">
+                <h5 class="card-title"><%=s.getNombre()%></h5>
+                <p class="card-text">Valor: $<%=s.getPrecio()%></p>
+            </div>
+        </div>
+            <br>
+                        <%
+                            }
+                        %>
+                    
+                
+            </div> 
             </div>
             <hr />
             <footer>

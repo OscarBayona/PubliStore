@@ -57,7 +57,7 @@
                                     <a class="nav-link active" aria-current="page" href="<%=request.getContextPath() %>/cliente/consultar.jsp">Consultar Servicios</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Nosotros</a>
+                                    <a class="nav-link" href="<%=request.getContextPath() %>/cliente/nosotros.jsp">Nosotros</a>
                                 </li>
                             </ul>
                             <form class="d-flex">
@@ -68,6 +68,13 @@
                     </div>
                 </nav>
             </div>
+                <div class="container">
+                    <h1>Bienvenidos a nuestra nueva página web</h1>
+                    <br>
+                    <p>PubliStore les da la bienvenida a su nueva página web, en la que podrá conocer todos nuestros servicios y acceder a ellos de una forma fácil y rápida y con un solo clic.</p>
+                    <br>
+                    <br>
+                </div>
             <hr />
             <footer>
                 Desarrollado por: Oscar Bayona-1151906
