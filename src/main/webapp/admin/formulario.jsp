@@ -42,11 +42,11 @@
                         <div class="row gy-3">
 
                             <input id="msg" name="msg"
-                                   value="<%= (p.getCodServicio() == 0) ? "Agregar Servicio" : "Modificar Servicio"%>" type="hidden">
+                                   value="<%= (p.getCodServicio() == 0) ? "Agregar Servicio" : "Modificar Servicio"%>" type="">
 
                             <div class="col-3 ">
                                 <div class="form-floating">
-                                    <input type="number" class="form-control" id="codProducto" name="codServicio" placeholder="1"
+                                    <input type="number" class="form-control" id="codServicio" name="codServicio" placeholder="1"
                                            <%
                                                if (request.getAttribute("titulo").equals("Modificar Servicio")) {
                                            %>

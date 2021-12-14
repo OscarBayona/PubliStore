@@ -13,6 +13,7 @@ controller\inicioSesion.class
 controller\comprar.class
 publistore\datos\entidades\Detalles.class
 publistore\datos\entidades\Usuario.class
+publistore\datos\PruebaCon.class
 publistore\datos\Conexion.class
 controller\eliminar.class
 publistore\datos\dao\DetalleDao.class

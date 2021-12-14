@@ -42,7 +42,7 @@ public class FacturaDao {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select f.idfactura, f.cedula, u.nombre as userName, u.apellido,"
                     + "d.codServicio, d.descuento, d.total from factura f "
-                    + "inner join usuario u ON f.cedula = u.cedula "
+                    + "inner join usuarios u ON f.cedula = u.cedula "
                     + "INNER JOIN detalles d ON f.iddetalle = d.iddetalle");
             while (rs.next()) {
                 Factura f = new Factura();

@@ -29,7 +29,7 @@ public class UsuarioDao implements Serializable{
         try{
             
             con = conexion.conectar("UsuarioDao.guardarUsuario");
-            String sql = "INSERT INTO usuario (cedula, nombre, apellido, email, contraseña, direccion, rol) VALUES (?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO usuarios (cedula, nombre, apellido, email, contraseña, direccion, rol) VALUES (?,?,?,?,?,?,?)";
             ps = con.prepareStatement(sql);
             ps.setInt(1, usuario.getCedula());
             ps.setString(2, usuario.getNombre());
@@ -64,7 +64,7 @@ public class UsuarioDao implements Serializable{
         try {
             con = conexion.conectar("UsuarioDao.getUsuario");
             PreparedStatement stm = con.prepareStatement(
-                    "SELECT * FROM usuario where cedula = ?");
+                    "SELECT * FROM usuarios where cedula = ?");
             stm.setInt(1, cedula);
             ResultSet rs = stm.executeQuery();
             if (rs.next()){
@@ -90,7 +90,7 @@ public class UsuarioDao implements Serializable{
         
         Conexion conexion = new Conexion();
         Connection con = conexion.conectar("UsuarioDao.getUsuarios");
-        String sql = "SELECT * FROM usuario";
+        String sql = "SELECT * FROM usuarios";
         PreparedStatement ps = con.prepareStatement(sql);
         ResultSet rst = ps.executeQuery();
         

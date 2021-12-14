@@ -51,9 +51,10 @@ public class inicioSesion extends HttpServlet {
                 request.getRequestDispatcher("/cliente/index.jsp").forward(request, response);
             }
             
-        }
+        }else{
         String url = request.getContextPath() + "/error.jsp";
         response.sendRedirect(url);
+        }
     }
 
     

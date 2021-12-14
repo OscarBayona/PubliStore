@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package publistore.datos.dao;
+
 import publistore.datos.entidades.Servicio;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +13,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import publistore.datos.Conexion;
+
 /**
  *
  * @author Oscar
  */
 public class ServicioDao {
-    
 
     public Servicio getServicio(int codServicio) {
         Conexion conexion = new Conexion();
@@ -48,31 +49,28 @@ public class ServicioDao {
         ArrayList<Servicio> lista = new ArrayList<Servicio>();
         Conexion conexion = new Conexion();
         Connection con = conexion.conectar("ServicioDao.getServicios");
-        
-            
-            String sql = "SELECT * FROM servicio";
-            PreparedStatement ps = con.prepareStatement(sql);
-         
-         ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Servicio s = new Servicio();
-                s.setCodServicio(rs.getInt("codServicio"));
-                s.setNombre(rs.getString("nombre"));
-                s.setCantidad(rs.getInt("cantidad"));
-                s.setPrecio(rs.getFloat("precio"));
-                lista.add(s);
-            }
-            
 
-        
+        String sql = "SELECT * FROM servicio";
+        PreparedStatement ps = con.prepareStatement(sql);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Servicio s = new Servicio();
+            s.setCodServicio(rs.getInt("codServicio"));
+            s.setNombre(rs.getString("nombre"));
+            s.setCantidad(rs.getInt("cantidad"));
+            s.setPrecio(rs.getFloat("precio"));
+            lista.add(s);
+        }
+
         rs.close();
-        rs=null;
-        
+        rs = null;
+
         ps.close();
-        ps=null;
-        
+        ps = null;
+
         con.close();
-        con=null;
+        con = null;
         return lista;
     }
 
@@ -83,13 +81,10 @@ public class ServicioDao {
         try {
             con = conexion.conectar("ServicioDao.addServicio");
             String sql;
-            if (msg.equals("Modificar Servicio")) {
-                sql = "UPDATE SERVICIO set nombre=?,cantidad=?,precio=? WHERE codServicio=?";
-                stm = con.prepareStatement(sql);
-            } else {
-                sql = "INSERT INTO SERVICIO (nombre,cantidad,precio,codServicio) VALUES (?,?,?,?)";
-                stm = con.prepareStatement(sql);
-            }
+
+            sql = "INSERT INTO servicio (nombre,cantidad,precio,codServicio) VALUES (?,?,?,?)";
+            stm = con.prepareStatement(sql);
+
             stm.setString(1, s.getNombre());
             stm.setInt(2, s.getCantidad());
             stm.setFloat(3, s.getPrecio());
@@ -102,14 +97,36 @@ public class ServicioDao {
             return "error";
         }
     }
-    
+
+    public String modServicio(Servicio s) {
+        Conexion conexion = new Conexion();
+        Connection con;
+        PreparedStatement stm;
+        try {
+            con = conexion.conectar("ServicioDao.addServicio");
+            String sql = "UPDATE servicio set nombre=?,cantidad=?,precio=? WHERE codServicio=?";
+            stm = con.prepareStatement(sql);
+
+            stm.setString(1, s.getNombre());
+            stm.setInt(2, s.getCantidad());
+            stm.setFloat(3, s.getPrecio());
+            stm.setInt(4, s.getCodServicio());
+
+            stm.executeUpdate();
+            stm.close();
+            return "exito";
+        } catch (SQLException ex) {
+            return "error";
+        }
+    }
+
     public String eliminar(Servicio s) {
         Conexion conexion = new Conexion();
         Connection con = null;
         try {
             con = conexion.conectar("ServicioDao.eliminar");
             PreparedStatement stm = con.prepareStatement(
-                    "DELETE FROM SERVICIO WHERE codServicio=?");
+                    "DELETE FROM servicio WHERE codServicio=?");
             stm.setInt(1, s.getCodServicio());
             stm.executeUpdate();
             stm.close();
@@ -117,5 +134,5 @@ public class ServicioDao {
         } catch (SQLException e) {
             return "error";
         }
-    } 
+    }
 }

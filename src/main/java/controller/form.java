@@ -60,11 +60,14 @@ public class form extends HttpServlet {
         float precio = Float.valueOf(request.getParameter("precio"));
         int cantidad = Integer.valueOf(request.getParameter("cant"));
         String mensaje = request.getParameter("msg");
-        
+        String msg = "";
         Servicio s = new Servicio(codServicio, nombre, precio, cantidad);
         ServicioDao dao = new ServicioDao();
-
-        String msg = dao.addServicio(s,mensaje);
+        if (mensaje.equals("Modificar Servicio")) {
+            msg = dao.modServicio(s);
+        } else {
+            msg = dao.addServicio(s, mensaje);
+        }
         if (msg.equals("exito")) {
             String url = request.getContextPath() + "/admin/gestionar.jsp";
             response.sendRedirect(url);
@@ -73,5 +76,5 @@ public class form extends HttpServlet {
             response.sendRedirect(url);
         }
     }
-    
+
 }

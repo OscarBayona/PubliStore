@@ -24,14 +24,14 @@ public class Conexion
 	long tiempo_inicio = -1;
   	long tiempo_total = 0;
   	
-  	private final static String url ="jdbc:mysql://mysql.madarme.co:3306/estudiante_17";//alojada
+  	private final static String url ="jdbc:mysql://mysql.madarme.co:3306/estudiante_17?serverTimeZone=UTC&autoReconnect=true&useSSL=false";//alojada
 	private String usuario="estudiante_17";	
-	private String password="harryt123";
+	private String password="Ii0pGTyP3M";
 	private final static String driver = "com.mysql.cj.jdbc.Driver";			
 	private String error;
 		
 	// portatil
-	public String ruta_logs="/opt/tomcat/apache-tomcat-9.0.37/webapps/5imrmpt/logs.html";
+	
 	
 	//public String ruta_logs="/var/www/vhosts/sotraexsa.com/httpdocs/ecolsi/clubbioarmonias/logs/logs.html";	
 	
@@ -79,11 +79,12 @@ public class Conexion
 			Class.forName(driver);
 			this.con = DriverManager.getConnection(url,usuario,password);
 			//this.escribirLogsCon(conectaDesde);
+                        System.out.println("Conexión exitosa desde " + conectaDesde);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
-			this.escribirLogs("Conexion","conectar()",e.toString());
+			System.out.println("No se pudo conectar");
 		}
 		return this.con;
 	}
@@ -118,52 +119,14 @@ public class Conexion
 		}
 		catch(Exception e)
 		{
-			this.escribirLogs("Conexion", "cerrarConexion()",e.toString());
+			
 		}
 		
 	}  		
 	
 	/**
 	 * M�todo que se encarga de escribir lo logs de conexi�n del usuario.
-	 * @param conexionDesde: pagina o clase donde se realiza la conexi�n.
-	 */
-	public void escribirLogsCon(String conexionDesde)
-	{
-		try
-		{
-			java.util.Date tiempo=new java.util.Date();
-			SimpleDateFormat formato_fecha=new SimpleDateFormat("dd MMMM yyyy");
-			SimpleDateFormat formato_hora=new SimpleDateFormat("h:mm a");
-			FileWriter fw = new FileWriter(this.ruta_logs,true);
-			fw.write(formato_fecha.format(tiempo)+" "+formato_hora.format(tiempo)+" >> Conexion del usuario: "+ this.usuario+" pagina: "+conexionDesde+"<br><br>");
-			fw.close();
-		}
-		catch(Exception e)
-		{
-			this.escribirLogs("Conexion", "escribirLogsCon()",e.toString());
-		}
-	}
-		
-	/* M�todo que registra los errores presentados en el sistema */
-	public void escribirLogs(String nombre_clase, String nombre_pagina,String mensaje_error)
-	{
-		try
-		{
-			java.util.Date tiempo=new java.util.Date();
-			SimpleDateFormat formato_fecha=new SimpleDateFormat("dd MMMM yyyy");
-			SimpleDateFormat formato_hora=new SimpleDateFormat("h:mm a");
-			FileWriter fw = new FileWriter(this.ruta_logs,true);
-			fw.write(formato_fecha.format(tiempo)+" "+formato_hora.format(tiempo)+" >> Error en la clase: "+nombre_clase+" de: "+nombre_pagina+ ": " +mensaje_error+"<br><br>");
-			fw.close();
-			
-			this.error = mensaje_error;
-		}
-		catch(Exception e)
-		{
-			System.err.println("Error en el m�todo escribirLogs: "+e.toString());
-		}
-	}
-	
+	 
 	/* M�todo que permite iniciar el cronometro */
 	public void iniciarCronometro()
 	{
