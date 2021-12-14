@@ -24,9 +24,9 @@ public class Conexion
 	long tiempo_inicio = -1;
   	long tiempo_total = 0;
   	
-  	private final static String url ="jdbc:mysql://localhost:3306/publistore";//local
-	private String usuario="publistore";	
-	private String password="web2021";
+  	private final static String url ="jdbc:mysql://mysql.madarme.co:3306/estudiante_17";//alojada
+	private String usuario="estudiante_17";	
+	private String password="harryt123";
 	private final static String driver = "com.mysql.cj.jdbc.Driver";			
 	private String error;
 		

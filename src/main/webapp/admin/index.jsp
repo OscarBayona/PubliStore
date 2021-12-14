@@ -35,7 +35,7 @@
                         <h5>Sistema de gestión</h5>
                     </section>
                     <section class="col-md-4">
-                        <img src="../img/Logo.png" alt="" width="55%" id="math" />
+                        <img src="<%=request.getContextPath()%>/img/Logo.png" alt="" width="55%" id="math" />
                     </section>
                 </section>
             </header>
@@ -76,7 +76,7 @@
             <hr />
             <footer>
                 Desarrollado por: Oscar Bayona-1151906
-                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="../img/sistemas.jpg" alt="Sistemas" /></a>
+                <a href="https://ingsistemas.cloud.ufps.edu.co/" target="_blank"><img src="<%=request.getContextPath()%>/img/sistemas.jpg" alt="Sistemas" /></a>
             </footer>
         </div>
     </body>
